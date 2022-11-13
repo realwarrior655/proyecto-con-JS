@@ -1,10 +1,16 @@
+/* index.html */
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic");
+@import url('loader.css');
 
 * {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
+
+/* html {
+    color-scheme: dark;
+} */
 
 body {
     padding: 20px;
@@ -14,8 +20,12 @@ h1, h2, h3, h4 {
     font-weight: 500;
 }
 
-p, span, strong, em, code {
+p, span, strong, code {
     font-size: larger;
+}
+
+em {
+    font-size: medium;
 }
 
 .container {
@@ -100,6 +110,10 @@ p, span, strong, em, code {
     color: red;
 }
 
+.centrar-div {
+    text-align: center;
+}
+
 .formulario {
     padding: 40px;
     border-radius: 10px;
@@ -107,12 +121,120 @@ p, span, strong, em, code {
     box-shadow: 5px 10px 40px lightgray;
 }
 
-.formulario input {
-    font-weight: 700;
-    background-color: whitesmoke !important;
+.btn-checkout {
+    background-color: rgba(139, 0, 139, 0.175) !important;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline;
+    padding: 10px;
+    float: right;
+    height: 70px;
+    width: 70px;
 }
 
-::placeholder {
-    color: darkmagenta;
-    opacity: 0.1;
+.btn-checkout img {
+    width: 60px;
+}
+
+.btn-checkout:hover {
+    box-shadow: 4px 4px 10px ligthgray;
+    transition: 0.17s ease-in;
+}
+
+.btn-checkout:active {
+    transition: 0.3s ease-out;
+    filter: grayscale(100%)
+}
+
+.form-checkout {
+    background-color: rgba(139, 0, 139, 0.102);
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+}
+
+thead tr {
+    background-color: darkmagenta;
+    color: white;
+}
+
+#tablehead {
+    padding: 10px;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(173, 216, 230, 0.252) !important;
+}
+
+.centrar {
+    text-align: center;
+}
+
+td.centrar p {
+    font-size: medium;
+    color: darkred;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+tr#filaTotal {
+    font-weight: 700;
+    background-color: black;
+    color: white;
+}
+
+#btnComprar:hover {
+    background-color: darkviolet;
+}
+
+#btnComprar:active {
+    background-color: black;
+}
+
+/* checkout.html */
+
+@media screen and (width <= 420px) {
+    .form-checkout {
+        padding: 8px;
+        width: 100%;
+    }
+
+    div.form-checkout p {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    table {
+        margin: 0 auto;
+        width: 100% !important;
+        margin-bottom: 60px;
+    }
+}
+
+@media screen and (width <= 767px) {
+    .form-checkout {
+        padding: 10px;
+        width: 100%;
+    }
+
+    table {
+        margin: 0 auto;
+        width: 100%;
+        margin-bottom: 60px;
+    }
+}
+
+@media screen and (width >= 768px) {
+    div.form-checkout {
+        padding: 30px;
+        max-width: 600px;
+    }
+
+    table {
+        margin: 0 auto;
+        max-width: 600px;
+        margin-bottom: 80px;
+    }
 }

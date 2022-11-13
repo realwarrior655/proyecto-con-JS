@@ -4,7 +4,7 @@ const container = document.querySelector("div.container")
 //EVENTO CLICK EN LOS BOTONES DE LAS CARDS
 const activarBotonesAdd = ()=> { 
     const botonesAdd = document.querySelectorAll(".button.button-outline.button-add")
-          botonesAdd.forEach(btn => btn.addEventListener("click", (e)=> agregarAlCarrito(e)))
+        botonesAdd.forEach(btn => btn.addEventListener("click", (e)=> agregarAlCarrito(e)))
 }
 
 //ARMO LAS CARDS, PARA CARGARLAS EN PANTALLA
@@ -28,9 +28,9 @@ const toast = (mensaje) => {
         position: "left", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
-      }).showToast();
+        }).showToast();
 }
 
 //AGREGAR UN PRODUCTO AL CARRITO
@@ -45,12 +45,12 @@ const agregarAlCarrito = (e)=> {
 }
 
 const guardarCarrito = () => { //ACA USO OPERADOR LOGICO
-    carrito.length > 0 && localStorage.setItem("carrito", JSON.stringify("carrito"))
+    carrito.length > 0 && localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
 const recuperarCarrito = ()=> {
-    if (localStorage.getItem("carrito")) {
-        let carritoRecuperado = JSON.parse(localStorage.getItem("carrito")) || []
+    if (localStorage.getItem(carrito)) {
+        let carritoRecuperado = JSON.parse(localStorage.getItem(carrito)) || []
             carritoRecuperado.forEach(producto => carrito.push(producto))
     } else {
         console.warn("No se encontró un carrito previamente guardado.")
