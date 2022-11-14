@@ -1,3 +1,4 @@
+let productos = []
 const carrito = []
 const container = document.querySelector("div.container")
 
@@ -8,16 +9,32 @@ const activarBotonesAdd = ()=> {
 }
 
 //ARMO LAS CARDS, PARA CARGARLAS EN PANTALLA
-const cargarMisProductos = ()=> { 
-    container.innerHTML = ""
-    productos.forEach(producto => container.innerHTML += retornoCard(producto))
-    activarBotonesAdd() //uso la funcion para activar el evento click en los botones
+
+const cargarMisProductos = async ()=> {
+    let armoHTML = ""
+    let activoBotones = true
+
+    try {
+        const response = await fetch("../baseDeDatos/productos.json")
+        productos= await response.json()
+        productos.forEach(producto => armoHTML += retornoCard(producto))
+    } catch (error) {
+        
+    } finally {
+        container.innerHTML = armoHTML
+        if(activoBotones) {
+            activarBotonesAdd()
+        }
+    }
 }
+
+ //uso la funcion para activar el evento click en los botones
+
 
 cargarMisProductos()
 
 
-//PLANTILLA DE NOTIFICACION CON LIBRERIA TOASTIFY
+//PLANTILLA DE TOASTIFY
 
 const toast = (mensaje) => {
     Toastify({

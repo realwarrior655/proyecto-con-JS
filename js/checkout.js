@@ -3,7 +3,7 @@ const btnComprar = document.querySelector("#btnComprar")
 
 const recuperarCarrito = ()=> {
     if (localStorage.getItem(carrito)) {
-        let carritoRecuperado = JSON.parse(localStorage.getItem(carrito)) || []
+        let carritoRecuperado = JSON.parse(localStorage.getItem("carrito")) || []
             carritoRecuperado.forEach(producto => carrito.push(producto))
     } else {
         console.warn("No se encontró un carrito previamente guardado.")
@@ -11,9 +11,8 @@ const recuperarCarrito = ()=> {
 }
 
 const cargarCarrito = ()=> {
-    let tablaBody = ""
+    let tablaHTML = ""
     const tbody = document.querySelector("tbody")
-        tbody.innerHTML = ""
         carrito.forEach(producto => {
             tablaBody += `<tr>
                             <th class="centrar">${producto.imagen}</th>
@@ -23,7 +22,7 @@ const cargarCarrito = ()=> {
                         </tr>`
         })
         tbody.innerHTML = tablaBody
-    let totalCarrito = carrito.reduce((acc, item)=> acc + item.precio, 0 )
+    let totalCarrito = carrito.reduce((acc, prod)=> acc + prod.precio, 0 )
         tbody.innerHTML += `<tr>
                                 <th></th>
                                 <th>TOTAL</th>
@@ -45,7 +44,7 @@ const activoBotonesDelete = ()=> { //ARMO ARRAY DE BOTONES DELETE
         })
 }
 
-//INTEGRO SWEET ALERT DE FORMA GENERICA
+//Sweet alert
 const alerta = (titulo, textoBoton)=> {
     return Swal.fire({title: titulo, confirmButtonText: textoBoton})
 }
@@ -65,7 +64,7 @@ const finalizarCompra = ()=> {
 
 btnComprar.addEventListener("click", ()=> carrito.length === 0 ? carritoVacio() : finalizarCompra() )
 
-//CARGAR AL INICIO DEL FORMULARIO HTML
+//cargar al inicio
 
 recuperarCarrito()
 carrito.length > 0 && cargarCarrito()
