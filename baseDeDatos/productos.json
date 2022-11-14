@@ -1,50 +1,60 @@
 [
     {
+        "id": 1,
         "imagen": "🍕",
         "nombre": "Pizza",
         "precio": 320
     },
     {
+        "id": 2,
         "imagen": "🍔",
         "nombre": "Burguer",
         "precio": 800
     },
     {
+        "id":3,
         "imagen": "🍟",
         "nombre": "Fries",
         "precio": 280
     },
     {
+        "id":4,
         "imagen": "🌭",
         "nombre": "Hotdog",
         "precio": 350
     },
     {
+        "id":5,
         "imagen": "🍿",
         "nombre": "PopCorn",
         "precio": 320
     },
     {
+        "id": 6,
         "imagen": "🥓",
         "nombre": "Bacon",
         "precio": 140
     },
     {
+        "id": 7,
         "imagen": "🥟",
         "nombre": "Empanada",
         "precio": 120
     },
     {
+        "id":8,
         "imagen": "🌮",
         "nombre": "Taco",
         "precio": 500
     },
     {
+        "id":9,
         "imagen": "🥗",
         "nombre": "Salad",
         "precio": 730
     },
     {
+        "id":10,
         "imagen": "🍣",
         "nombre": "Sushi",
         "precio": 1200

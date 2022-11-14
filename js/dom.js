@@ -1,5 +1,6 @@
 let productos = []
 const carrito = []
+const urlFetch = 'https://63727631348e947299f6299d.mockapi.io/api/productos/productos'
 const container = document.querySelector("div.container")
 
 //EVENTO CLICK EN LOS BOTONES DE LAS CARDS
@@ -8,14 +9,14 @@ const activarBotonesAdd = ()=> {
         botonesAdd.forEach(btn => btn.addEventListener("click", (e)=> agregarAlCarrito(e)))
 }
 
-//ARMO LAS CARDS, PARA CARGARLAS EN PANTALLA
+//armo las cards para la pantalla, activo botones y preparo protocolo de error
 
 const cargarMisProductos = async ()=> {
     let armoHTML = ""
     let activoBotones = true
 
     try {
-        const response = await fetch("../baseDeDatos/productos.json")
+        const response = await fetch(urlFetch)
         productos= await response.json()
         productos.forEach(producto => armoHTML += retornoCard(producto))
     } catch (error) {
@@ -27,11 +28,6 @@ const cargarMisProductos = async ()=> {
         }
     }
 }
-
- //uso la funcion para activar el evento click en los botones
-
-
-cargarMisProductos()
 
 
 //PLANTILLA DE TOASTIFY
@@ -62,12 +58,12 @@ const agregarAlCarrito = (e)=> {
 }
 
 const guardarCarrito = () => { //ACA USO OPERADOR LOGICO
-    carrito.length > 0 && localStorage.setItem("carrito", JSON.stringify(carrito))
+    carrito.length > 0 && localStorage.setItem("carrito", JSON.stringify("carrito"))
 }
 
 const recuperarCarrito = ()=> {
     if (localStorage.getItem(carrito)) {
-        let carritoRecuperado = JSON.parse(localStorage.getItem(carrito)) || []
+        let carritoRecuperado = JSON.parse(localStorage.getItem("carrito")) || []
             carritoRecuperado.forEach(producto => carrito.push(producto))
     } else {
         console.warn("No se encontró un carrito previamente guardado.")

@@ -38,7 +38,7 @@ const activoBotonesDelete = ()=> { //ARMO ARRAY DE BOTONES DELETE
                 //BUSCO INDEX DE UN PRODUCTO EN CARRITO Y LO ELIMINO CON SPLICE() 
                 let aEliminar = carrito.findIndex(producto => producto.nombre === e.target.id) 
                     carrito.splice(aEliminar, 1)
-                    localStorage.setItem("carrito", JSON.stringify(carrito)) //ACTUALIZO CARRITO EN LOCALSTORAGE 
+                    localStorage.setItem("carrito", JSON.stringify("carrito")) //ACTUALIZO CARRITO EN LOCALSTORAGE 
                     cargarCarrito() //RECARGO CARRITO EN TABLE Y SE ACTUALIZAN LOS PRODUCTOS 
             })
         })
