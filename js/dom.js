@@ -58,7 +58,7 @@ const agregarAlCarrito = (e)=> {
 }
 
 const guardarCarrito = () => { //ACA USO OPERADOR LOGICO
-    carrito.length > 0 && localStorage.setItem("carrito", JSON.stringify("carrito"))
+    carrito.length > 0 && localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
 const recuperarCarrito = ()=> {

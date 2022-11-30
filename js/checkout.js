@@ -3,7 +3,7 @@ const btnComprar = document.querySelector("#btnComprar")
 
 const recuperarCarrito = ()=> {
     if (localStorage.getItem(carrito)) {
-        let carritoRecuperado = JSON.parse(localStorage.getItem("carrito")) || []
+        let carritoRecuperado = JSON.parse(localStorage.getItem(carrito))
             carritoRecuperado.forEach(producto => carrito.push(producto))
     } else {
         console.warn("No se encontró un carrito previamente guardado.")
@@ -38,9 +38,11 @@ const activoBotonesDelete = ()=> { //ARMO ARRAY DE BOTONES DELETE
                 //BUSCO INDEX DE UN PRODUCTO EN CARRITO Y LO ELIMINO CON SPLICE() 
                 let aEliminar = carrito.findIndex(producto => producto.nombre === e.target.id) 
                     carrito.splice(aEliminar, 1)
-                    localStorage.setItem("carrito", JSON.stringify("carrito")) //ACTUALIZO CARRITO EN LOCALSTORAGE 
-                    cargarCarrito() //RECARGO CARRITO EN TABLE Y SE ACTUALIZAN LOS PRODUCTOS 
-            })
+                    localStorage.setItem("carrito", JSON.stringify(carrito))
+                } //ACTUALIZO CARRITO EN LOCALSTORAGE 
+                ,
+                    cargarCarrito()//RECARGO CARRITO EN TABLE Y SE ACTUALIZAN LOS PRODUCTOS 
+            )
         })
 }
 
@@ -56,15 +58,15 @@ const carritoVacio = ()=> {
 const finalizarCompra = ()=> {
     alerta('Muchas gracias por su compra.', 'FINALIZAR').then(result => {
         if (result.isConfirmed) {
-            localStorage.removeItem("carrito")
+            localStorage.removeItem(carrito)
             location.href = 'index.html'
         }
     })
 }
 
-btnComprar.addEventListener("click", ()=> carrito.length === 0 ? carritoVacio() : finalizarCompra() )
+btnComprar.addEventListener(click, ()=> carrito.length === 0 ? carritoVacio() : finalizarCompra() )
 
 //cargar al inicio
 
 recuperarCarrito()
-carrito.length > 0 && cargarCarrito()
+
