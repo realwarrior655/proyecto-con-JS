@@ -52,7 +52,6 @@ const agregarAlCarrito = (e)=> {
     let resultado = productos.find(prod => prod.nombre === e.target.id)
         if (resultado !== undefined) {
             carrito.push(resultado)
-            guardarCarrito()
             toast(`'${e.target.id}' es un elemento del carrito ahora.`)
             }
 }
@@ -63,7 +62,7 @@ const guardarCarrito = () => { //ACA USO OPERADOR LOGICO
 
 const recuperarCarrito = ()=> {
     if (localStorage.getItem(carrito)) {
-        let carritoRecuperado = JSON.parse(localStorage.getItem("carrito")) || []
+        let carritoRecuperado = JSON.parse(localStorage.getItem(carrito)) || []
             carritoRecuperado.forEach(producto => carrito.push(producto))
     } else {
         console.warn("No se encontró un carrito previamente guardado.")
@@ -75,3 +74,6 @@ recuperarCarrito()
 
 //cargar productos para comprar
 cargarMisProductos()
+
+//guardo los productos del carrito
+guardarCarrito()
